@@ -1,0 +1,30 @@
+
+    <section id ="facilities-section" class="section-padding bg-sky-50">
+      <div class="section-container">
+        <app-section-heading
+          title="Cơ Sở Vật Chất"
+          subtitle="Không gian học tập hiện đại, an toàn và thân thiện"
+          badge="Cơ Sở"
+          badgeClass="bg-sky-100 text-sky-500"
+          accentClass="bg-sky-400">
+        </app-section-heading>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div *ngFor="let f of facilities()" class="card-base p-6">
+            <div class="text-4xl mb-3">{{ f.iconEmoji }}</div>
+            <h3 class="font-heading font-bold text-gray-800 text-lg mb-2">{{ f.name }}</h3>
+            <p class="font-body text-gray-500 text-sm">{{ f.description }}</p>
+          </div>
+        </div>
+
+        <h3 class="font-heading font-bold text-gray-700 text-2xl mb-6">Hình Ảnh Cơ Sở</h3>
+        <app-image-gallery-grid [images]="allImages()" (imageClick)="openLightbox($event)" />
+      </div>
+    </section>
+
+    <app-image-lightbox
+      [images]="allImages()"
+      [startIndex]="lightboxIndex()"
+      [open]="lightboxOpen()"
+      (closeEvent)="closeLightbox()">
+    </app-image-lightbox>

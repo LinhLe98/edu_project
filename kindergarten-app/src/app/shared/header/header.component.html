@@ -1,0 +1,32 @@
+
+    <header class="sticky top-0 z-40 transition-all duration-300"
+            [ngClass]="scrolled() ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-white/90 backdrop-blur-sm'">
+      <div class="section-container">
+        <div class="flex items-center justify-between h-16 md:h-18">
+          <!-- Logo -->
+          <a routerLink="/" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-peach-300 to-peach-500 flex items-center justify-center text-white font-heading font-bold text-lg shadow-soft group-hover:shadow-soft-md transition-shadow duration-200">
+              Á
+            </div>
+            <div class="hidden xs:block">
+              <div class="font-heading font-bold text-gray-800 text-base leading-tight">Ánh Dương</div>
+              <div class="font-body text-gray-400 text-xs">Trường Mầm Non</div>
+            </div>
+          </a>
+
+          <!-- Desktop nav -->
+          <app-nav-menu />
+
+          <!-- Mobile hamburger -->
+          <button class="md:hidden p-2 rounded-xl hover:bg-warm-100 transition-colors"
+                  (click)="menuOpen.set(true)"
+                  aria-label="Mở menu">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <app-mobile-menu-drawer [open]="menuOpen()" (close)="menuOpen.set(false)" />

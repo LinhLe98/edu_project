@@ -1,0 +1,48 @@
+
+    <div class="card-base p-8">
+      <h2 class="font-heading font-bold text-2xl text-gray-800 mb-6">Thông Tin Liên Hệ</h2>
+      <ul class="space-y-5">
+        <li class="flex items-start gap-4">
+          <span class="text-2xl flex-shrink-0">📍</span>
+          <div>
+            <div class="font-body font-semibold text-gray-700 text-sm mb-0.5">Địa chỉ</div>
+            <div class="font-body text-gray-500">{{ info.address }}, {{ info.district }}, {{ info.city }}</div>
+          </div>
+        </li>
+        <li *ngFor="let phone of info.phones" class="flex items-center gap-4">
+          <span class="text-2xl flex-shrink-0">📞</span>
+          <div>
+            <div class="font-body font-semibold text-gray-700 text-sm mb-0.5">Điện thoại</div>
+            <a [href]="'tel:' + phone.replace(/\s/g, '')"
+               class="font-body text-peach-500 hover:underline">{{ phone }}</a>
+          </div>
+        </li>
+        <li class="flex items-center gap-4">
+          <span class="text-2xl flex-shrink-0">✉️</span>
+          <div>
+            <div class="font-body font-semibold text-gray-700 text-sm mb-0.5">Email</div>
+            <a [href]="'mailto:' + info.email" class="font-body text-peach-500 hover:underline break-all">{{ info.email }}</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="mt-6 pt-6 border-t border-warm-100">
+        <h3 class="font-heading font-semibold text-gray-700 mb-3">Giờ làm việc</h3>
+        <ul class="space-y-2">
+          <li *ngFor="let h of info.workingHours" class="flex justify-between font-body text-sm">
+            <span class="text-gray-500">{{ h.label }}</span>
+            <span class="text-gray-800 font-medium">{{ h.hours }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-warm-100">
+        <h3 class="font-heading font-semibold text-gray-700 mb-3">Mạng xã hội</h3>
+        <div class="flex gap-3">
+          <a *ngFor="let s of info.socialLinks" [href]="s.url" target="_blank" rel="noopener noreferrer"
+             class="w-10 h-10 rounded-full bg-warm-100 flex items-center justify-center hover:bg-peach-100 transition-colors duration-200 text-lg">
+            {{ platformIcon(s.platform) }}
+          </a>
+        </div>
+      </div>
+    </div>

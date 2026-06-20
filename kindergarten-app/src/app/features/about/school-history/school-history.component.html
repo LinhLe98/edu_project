@@ -1,0 +1,32 @@
+
+    <section class="section-padding bg-white">
+      <div class="section-container">
+        <app-section-heading
+          title="Lịch Sử Hình Thành"
+          subtitle="Hành trình 15 năm xây dựng và phát triển"
+          badge="Lịch Sử"
+          badgeClass="bg-lavender-100 text-lavender-500"
+          accentClass="bg-lavender-400">
+        </app-section-heading>
+        <div class="relative">
+          <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-lavender-200 hidden md:block"></div>
+          <div class="space-y-10">
+            <div *ngFor="let event of timeline; let i = index"
+                 class="flex flex-col md:flex-row items-start md:items-center gap-6"
+                 [class.md:flex-row-reverse]="i % 2 !== 0">
+              <div class="flex-1" [class.md:text-right]="i % 2 === 0">
+                <div class="card-base p-6 inline-block w-full">
+                  <div class="font-heading font-bold text-lavender-500 text-lg mb-1">{{ event.year }}</div>
+                  <h3 class="font-heading font-semibold text-gray-800 text-xl mb-2">{{ event.title }}</h3>
+                  <p class="font-body text-gray-500 text-sm">{{ event.desc }}</p>
+                </div>
+              </div>
+              <div class="hidden md:flex w-12 h-12 rounded-full bg-lavender-400 text-white items-center justify-center font-heading font-bold text-sm flex-shrink-0 z-10 shadow-soft">
+                {{ i + 1 }}
+              </div>
+              <div class="flex-1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

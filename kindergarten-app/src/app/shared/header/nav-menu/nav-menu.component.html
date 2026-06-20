@@ -1,0 +1,16 @@
+
+    <nav class="hidden md:flex items-center gap-1">
+      <a *ngFor="let item of navItems"
+         [routerLink]="item.path"
+         routerLinkActive="text-peach-500 bg-peach-50"
+         [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+         [class.text-peach-500]="isExtraActive(item)"
+         [class.bg-peach-50]="isExtraActive(item)"
+         class="px-4 py-2 rounded-full font-body font-medium text-gray-700 hover:text-peach-500 hover:bg-peach-50 transition-all duration-200 text-sm">
+        {{ item.label }}
+      </a>
+      <a routerLink="/contact"
+         class="btn-primary text-sm px-5 py-2 ml-2">
+        Đăng Ký
+      </a>
+    </nav>

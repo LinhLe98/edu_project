@@ -1,0 +1,9 @@
+
+    <nav class="flex items-center gap-2 text-sm font-body text-gray-500 mb-6">
+      <ng-container *ngFor="let item of items; let last = last">
+        <a *ngIf="item.link && !last" [routerLink]="item.link"
+           class="hover:text-peach-500 transition-colors duration-150">{{ item.label }}</a>
+        <span *ngIf="!item.link || last" [class.text-gray-800]="last" [class.font-medium]="last">{{ item.label }}</span>
+        <span *ngIf="!last" class="text-gray-300">›</span>
+      </ng-container>
+    </nav>

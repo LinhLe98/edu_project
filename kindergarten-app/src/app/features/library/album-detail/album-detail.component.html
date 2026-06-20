@@ -1,0 +1,61 @@
+
+    <div class="section-padding">
+      <div class="section-container">
+        <app-breadcrumb [items]="[
+          { label: 'Trang Chủ', link: '/' },
+          { label: 'Thư Viện', link: '/library' },
+          { label: album()?.title || '...' }
+        ]" />
+
+        <div *ngIf="album()">
+          <div class="mb-8">
+            <h1 class="font-heading text-4xl font-bold text-gray-800 mb-2">{{ album()!.title }}</h1>
+            <p class="font-body text-gray-500">{{ album()!.description }}</p>
+            <p class="font-body text-gray-400 text-sm mt-1">{{ album()!.images.length }} ảnh · {{ formattedDate }}</p>
+          </div>
+
+          <app-image-gallery-grid [images]="album()!.images" (imageClick)="openLightbox($event)" />
+
+          <!-- Reactions section -->
+          <div class="mt-10 pt-8 border-t border-gray-100">
+            <p class="font-body text-sm text-gray-500 mb-3">Cảm nhận của bạn về album này:</p>
+            <div class="flex flex-wrap gap-3">
+              <button
+                *ngFor="let r of reactions(); let i = index"
+                (click)="react(i)"
+                [class.bg-sky-100]="r.reacted"
+                [class.bg-gray-50]="!r.reacted"
+                [class.border-sky-300]="r.reacted"
+                [class.border-gray-200]="!r.reacted"
+                class="flex items-center gap-2 px-4 py-2 rounded-full border font-body text-sm transition-all duration-150 hover:shadow-soft cursor-pointer">
+                <span class="text-lg leading-none">{{ r.emoji }}</span>
+                <span [class.text-sky-600]="r.reacted" [class.text-gray-600]="!r.reacted">{{ r.label }}</span>
+                <span *ngIf="r.count > 0"
+                      [class.text-sky-500]="r.reacted"
+                      [class.text-gray-400]="!r.reacted"
+                      class="font-semibold text-xs">{{ r.count }}</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <a routerLink="/library" class="btn-secondary">
+              ← Quay lại Thư Viện
+            </a>
+          </div>
+        </div>
+
+        <div *ngIf="!album()" class="text-center py-20">
+          <p class="font-body text-gray-400 text-lg">Không tìm thấy album này.</p>
+          <a routerLink="/library" class="btn-primary mt-4">Quay lại Thư Viện</a>
+        </div>
+      </div>
+    </div>
+
+    <app-image-lightbox
+      *ngIf="album()"
+      [images]="album()!.images"
+      [startIndex]="lightboxIndex()"
+      [open]="lightboxOpen()"
+      (closeEvent)="closeLightbox()">
+    </app-image-lightbox>

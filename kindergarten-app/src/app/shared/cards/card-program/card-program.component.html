@@ -1,0 +1,21 @@
+
+    <div class="card-base card-hover flex flex-col h-full group border-l-4 border-mint-400">
+      <div class="relative overflow-hidden aspect-video">
+        <img [src]="program.coverImage" [alt]="program.title"
+             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+        <span class="absolute top-3 left-3 text-3xl">{{ program.iconEmoji }}</span>
+      </div>
+      <div class="p-5 flex flex-col flex-1">
+        <h3 class="font-heading font-bold text-gray-800 text-xl mb-2 group-hover:text-mint-600 transition-colors duration-200">
+          {{ program.title }}
+        </h3>
+        <p class="text-gray-500 font-body text-sm flex-1 line-clamp-3">{{ program.shortDescription }}</p>
+        <div class="mt-4">
+          <a [routerLink]="['/activities', program.slug]"
+             class="text-mint-600 font-body text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all duration-200">
+            Xem thêm <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>

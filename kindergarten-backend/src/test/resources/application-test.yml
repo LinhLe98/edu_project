@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kindergarten_dev
+    username: postgres
+    password: postgres
+  flyway:
+    enabled: true
+app:
+  admin:
+    username: admin
+    password: admin
+  cors:
+    allowed-origins: http://localhost:4200

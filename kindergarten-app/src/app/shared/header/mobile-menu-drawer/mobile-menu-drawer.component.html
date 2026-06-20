@@ -1,0 +1,33 @@
+
+    <div *ngIf="open" class="fixed inset-0 z-50 md:hidden">
+      <!-- backdrop -->
+      <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" (click)="close.emit()"></div>
+      <!-- drawer -->
+      <div @drawerAnim class="absolute top-0 left-0 h-full w-72 bg-white shadow-soft-lg flex flex-col">
+        <div class="flex items-center justify-between px-6 py-5 border-b border-warm-100">
+          <span class="font-heading font-bold text-xl text-peach-500">Ánh Dương</span>
+          <button (click)="close.emit()" class="p-2 rounded-full hover:bg-warm-100 transition-colors">
+            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <nav class="flex flex-col py-4 px-4 gap-1 flex-1">
+          <a *ngFor="let item of navItems"
+             [routerLink]="item.path"
+             routerLinkActive="bg-peach-50 text-peach-500"
+             [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+             [class.bg-peach-50]="isExtraActive(item)"
+             [class.text-peach-500]="isExtraActive(item)"
+             (click)="close.emit()"
+             class="px-4 py-3 rounded-2xl font-body font-medium text-gray-700 hover:bg-peach-50 hover:text-peach-500 transition-all duration-150">
+            {{ item.label }}
+          </a>
+        </nav>
+        <div class="px-6 pb-8">
+          <a routerLink="/contact" (click)="close.emit()" class="btn-primary w-full justify-center">
+            Đăng Ký Ngay
+          </a>
+        </div>
+      </div>
+    </div>

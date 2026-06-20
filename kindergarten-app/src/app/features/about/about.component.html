@@ -1,0 +1,74 @@
+
+<!-- Intro: hero left + school history right -->
+<section class="section-padding bg-gradient-to-br from-lavender-50 via-warm-50 to-mint-50 overflow-hidden relative">
+  <!-- decorative circles -->
+  <div class="absolute top-0 right-0 w-72 h-72 rounded-full bg-lavender-300 opacity-15 -translate-y-1/3 translate-x-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-52 h-52 rounded-full bg-lavender-300 opacity-10 translate-y-1/3 -translate-x-1/3"></div>
+
+  <div class="section-container relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Left: Hero content -->
+      <div class="flex flex-col justify-center lg:sticky lg:top-24">
+        <span class="inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 bg-white/60 text-lavender-600 w-fit">
+          Về Chúng Tôi
+        </span>
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+          Giới Thiệu<br>
+          <span class="text-lavender-500">Trường Mầm Non</span><br>
+          Ánh Dương
+        </h1>
+        <p class="font-body text-gray-600 text-lg mb-8 leading-relaxed">
+          Hành trình 15 năm xây dựng và phát triển, ươm mầm tương lai cho hàng nghìn thế hệ học sinh.
+        </p>
+        <div class="grid grid-cols-3 gap-4 mb-8">
+          <div class="card-base p-4 text-center">
+            <div class="font-heading font-bold text-2xl text-lavender-500 mb-0.5">15+</div>
+            <div class="font-body text-xs text-gray-500">Năm thành lập</div>
+          </div>
+          <div class="card-base p-4 text-center">
+            <div class="font-heading font-bold text-2xl text-lavender-500 mb-0.5">350+</div>
+            <div class="font-body text-xs text-gray-500">Học sinh</div>
+          </div>
+          <div class="card-base p-4 text-center">
+            <div class="font-heading font-bold text-2xl text-lavender-500 mb-0.5">25+</div>
+            <div class="font-body text-xs text-gray-500">Giáo viên</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a routerLink="/contact" class="btn-primary">Đăng ký tham quan</a>
+          <a routerLink="/contact" class="btn-secondary border-lavender-400 text-lavender-500 hover:bg-lavender-50">Liên hệ ngay</a>
+        </div>
+      </div>
+
+      <!-- Right: School history timeline -->
+      <div>
+        <div class="flex items-center gap-2 mb-6">
+          <span class="inline-block bg-lavender-100 text-lavender-500 text-xs font-semibold px-3 py-1 rounded-full font-body">Lịch Sử</span>
+          <h2 class="font-heading font-bold text-gray-800 text-2xl">Hành Trình Hình Thành</h2>
+        </div>
+        <div class="relative">
+          <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-lavender-200"></div>
+          <div class="space-y-6">
+            <div *ngFor="let event of timeline; let i = index"
+                 class="flex gap-4 items-start pl-0">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-lavender-400 text-white flex items-center justify-center font-heading font-bold text-xs z-10 shadow-soft">
+                {{ event.year.slice(2) }}'
+              </div>
+              <div class="card-base p-4 flex-1 min-w-0">
+                <div class="font-heading font-semibold text-lavender-500 text-sm mb-0.5">{{ event.year }}</div>
+                <h3 class="font-heading font-semibold text-gray-800 text-base mb-1">{{ event.title }}</h3>
+                <p class="font-body text-gray-500 text-sm leading-relaxed">{{ event.desc }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<app-management-board />
+<app-teacher-groups />
+<app-facilities-section />

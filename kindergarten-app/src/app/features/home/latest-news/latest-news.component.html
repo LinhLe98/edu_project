@@ -1,0 +1,19 @@
+
+    <section class="section-padding bg-white">
+      <div class="section-container">
+        <app-section-heading
+          title="Tin Tức & Sự Kiện"
+          subtitle="Cập nhật mới nhất từ trường Mầm Non Ánh Dương"
+          badge="Tin Tức"
+          badgeClass="bg-sky-100 text-sky-500"
+          accentClass="bg-sky-400">
+        </app-section-heading>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a *ngFor="let article of latestNews()"
+             [routerLink]="['/news', article.slug]"
+             class="block h-full no-underline">
+            <app-card-news [article]="article" />
+          </a>
+        </div>
+      </div>
+    </section>

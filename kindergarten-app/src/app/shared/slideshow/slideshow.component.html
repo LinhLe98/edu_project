@@ -1,0 +1,24 @@
+
+    <div class="relative w-full overflow-hidden" [style.height]="height">
+      <swiper-container #swiperEl class="w-full h-full">
+        <swiper-slide *ngFor="let slide of slides; let i = index"
+                      [attr.aria-label]="(i + 1) + ' / ' + slides.length"
+                      class="relative">
+          <img [src]="slide.imageUrl" [alt]="slide.altText"
+               class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-end pb-16 md:pb-20 px-6 text-center">
+            <h2 class="font-heading font-bold text-white text-3xl md:text-5xl mb-3 drop-shadow-lg">
+              {{ slide.heading }}
+            </h2>
+            <p *ngIf="slide.subheading" class="font-body text-white/90 text-base md:text-xl max-w-2xl mb-6 drop-shadow">
+              {{ slide.subheading }}
+            </p>
+            <a *ngIf="slide.ctaLabel && slide.ctaLink"
+               [routerLink]="slide.ctaLink" [fragment]="slide.ctaFragment" class="btn-outline text-sm md:text-base">
+              {{ slide.ctaLabel }}
+            </a>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>

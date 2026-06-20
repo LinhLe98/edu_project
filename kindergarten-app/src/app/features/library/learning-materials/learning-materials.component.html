@@ -1,0 +1,49 @@
+
+    <section class="section-padding bg-white">
+      <div class="section-container">
+        <app-section-heading
+          title="Học Liệu"
+          subtitle="Tài liệu và học liệu hỗ trợ phụ huynh đồng hành cùng bé"
+          badge="Học Liệu"
+          badgeClass="bg-sky-100 text-sky-500"
+          accentClass="bg-sky-400">
+        </app-section-heading>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let material of materials()"
+               class="card-base flex flex-col p-5 gap-3">
+            <!-- Icon & title -->
+            <div class="flex items-start gap-3">
+              <div class="text-3xl flex-shrink-0">{{ material.icon }}</div>
+              <div class="flex-1 min-w-0">
+                <h3 class="font-heading font-semibold text-gray-800 text-base mb-1 line-clamp-2">
+                  {{ material.title }}
+                </h3>
+                <p class="font-body text-gray-500 text-sm line-clamp-2">{{ material.description }}</p>
+              </div>
+            </div>
+
+            <!-- Meta info -->
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-body font-medium bg-sky-100 text-sky-600">
+                {{ material.type }}
+              </span>
+              <span class="font-body text-gray-400 text-xs">{{ material.size }}</span>
+              <span class="font-body text-gray-400 text-xs">· Cập nhật {{ formatDate(material.updatedAt) }}</span>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex items-center gap-2 mt-auto pt-1">
+              <button (click)="viewMaterial(material)"
+                      class="btn-secondary flex-1 text-sm py-2">
+                Xem trực tuyến
+              </button>
+              <button (click)="downloadMaterial(material)"
+                      class="btn-primary flex-1 text-sm py-2">
+                Tải xuống
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

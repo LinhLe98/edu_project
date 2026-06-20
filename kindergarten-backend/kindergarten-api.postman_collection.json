@@ -1,0 +1,516 @@
+{
+  "info": {
+    "name": "Kindergarten Backend API",
+    "description": "REST API for Trường Mầm Non Ánh Dương. Base URL: http://localhost:8080/api/v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "adminUsername",
+      "value": "admin",
+      "type": "string"
+    },
+    {
+      "key": "adminPassword",
+      "value": "admin",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Slides",
+      "item": [
+        {
+          "name": "Get all slides",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/slides",
+              "host": ["{{baseUrl}}"],
+              "path": ["slides"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Staff",
+      "item": [
+        {
+          "name": "Get all staff",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff"]
+            }
+          }
+        },
+        {
+          "name": "Get featured staff",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff/featured",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "featured"]
+            }
+          }
+        },
+        {
+          "name": "Get management team",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff/management",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "management"]
+            }
+          }
+        },
+        {
+          "name": "Get all teachers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff/teachers",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "teachers"]
+            }
+          }
+        },
+        {
+          "name": "Get staff by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get staff by department",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff/department/:dept",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "department", ":dept"],
+              "variable": [
+                {
+                  "key": "dept",
+                  "value": "ban-giam-hieu",
+                  "description": "ban-giam-hieu | to-giao-vien-la | to-giao-vien-choi | to-giao-vien-mam | to-nhan-vien"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get department leader",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff/department/:dept/leader",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "department", ":dept", "leader"],
+              "variable": [
+                {
+                  "key": "dept",
+                  "value": "ban-giam-hieu",
+                  "description": "ban-giam-hieu | to-giao-vien-la | to-giao-vien-choi | to-giao-vien-mam | to-nhan-vien"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get department vice-leaders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff/department/:dept/vice-leaders",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "department", ":dept", "vice-leaders"],
+              "variable": [
+                {
+                  "key": "dept",
+                  "value": "ban-giam-hieu",
+                  "description": "ban-giam-hieu | to-giao-vien-la | to-giao-vien-choi | to-giao-vien-mam | to-nhan-vien"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "News",
+      "item": [
+        {
+          "name": "Get paginated news",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/news?page=0&size=6",
+              "host": ["{{baseUrl}}"],
+              "path": ["news"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "6" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get featured news",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/news/featured",
+              "host": ["{{baseUrl}}"],
+              "path": ["news", "featured"]
+            }
+          }
+        },
+        {
+          "name": "Get latest news",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/news/latest?count=3",
+              "host": ["{{baseUrl}}"],
+              "path": ["news", "latest"],
+              "query": [
+                { "key": "count", "value": "3" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get news by category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/news/category/:category",
+              "host": ["{{baseUrl}}"],
+              "path": ["news", "category", ":category"],
+              "variable": [
+                {
+                  "key": "category",
+                  "value": "su-kien",
+                  "description": "thong-bao | su-kien | tin-tuc | hoat-dong"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get news by slug",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/news/:slug",
+              "host": ["{{baseUrl}}"],
+              "path": ["news", ":slug"],
+              "variable": [
+                {
+                  "key": "slug",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Programs",
+      "item": [
+        {
+          "name": "Get all programs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/programs",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs"]
+            }
+          }
+        },
+        {
+          "name": "Get programs by age group",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/programs/age-group/:age",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs", "age-group", ":age"],
+              "variable": [
+                {
+                  "key": "age",
+                  "value": "3-tuoi",
+                  "description": "3-tuoi | 4-tuoi | 5-tuoi | all"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get program by slug",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/programs/:slug",
+              "host": ["{{baseUrl}}"],
+              "path": ["programs", ":slug"],
+              "variable": [
+                {
+                  "key": "slug",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gallery",
+      "item": [
+        {
+          "name": "Get all albums",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/gallery/albums",
+              "host": ["{{baseUrl}}"],
+              "path": ["gallery", "albums"]
+            }
+          }
+        },
+        {
+          "name": "Get albums by age group",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/gallery/albums/age-group/:age",
+              "host": ["{{baseUrl}}"],
+              "path": ["gallery", "albums", "age-group", ":age"],
+              "variable": [
+                {
+                  "key": "age",
+                  "value": "3-tuoi",
+                  "description": "3-tuoi | 4-tuoi | 5-tuoi | all"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get albums by category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/gallery/albums/category/:category",
+              "host": ["{{baseUrl}}"],
+              "path": ["gallery", "albums", "category", ":category"],
+              "variable": [
+                {
+                  "key": "category",
+                  "value": "hoat-dong-hoc",
+                  "description": "hoat-dong-hoc | vui-choi | le-hoi | co-so-vat-chat | tham-quan"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get album by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/gallery/albums/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["gallery", "albums", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Materials",
+      "item": [
+        {
+          "name": "Get all materials",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/materials",
+              "host": ["{{baseUrl}}"],
+              "path": ["materials"]
+            }
+          }
+        },
+        {
+          "name": "Get materials by category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/materials/category/:category",
+              "host": ["{{baseUrl}}"],
+              "path": ["materials", "category", ":category"],
+              "variable": [
+                {
+                  "key": "category",
+                  "value": "lich-hoc",
+                  "description": "thuc-don | lich-hoc | sach-bai-tap | am-nhac | huong-dan | the-chat | nghe-thuat"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get materials by age group",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/materials/age-group/:age",
+              "host": ["{{baseUrl}}"],
+              "path": ["materials", "age-group", ":age"],
+              "variable": [
+                {
+                  "key": "age",
+                  "value": "3-tuoi",
+                  "description": "3-tuoi | 4-tuoi | 5-tuoi | all"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get material by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/materials/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["materials", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Facilities",
+      "item": [
+        {
+          "name": "Get all facilities",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/facilities",
+              "host": ["{{baseUrl}}"],
+              "path": ["facilities"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "item": [
+        {
+          "name": "Get contact info",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/contact",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact"]
+            }
+          }
+        },
+        {
+          "name": "Submit support request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nguyen Van A\",\n  \"phone\": \"0901234567\",\n  \"email\": \"parent@example.com\",\n  \"subject\": \"Hỏi về lịch học\",\n  \"message\": \"Cho tôi hỏi lịch học tuần tới của lớp 3 tuổi như thế nào?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contact/support-requests",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact", "support-requests"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Get support requests",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "{{adminUsername}}", "type": "string" },
+                { "key": "password", "value": "{{adminPassword}}", "type": "string" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/support-requests?page=0&size=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "support-requests"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "20" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

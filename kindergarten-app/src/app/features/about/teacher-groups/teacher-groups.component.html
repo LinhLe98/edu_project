@@ -1,0 +1,28 @@
+
+    <section id="teacher-groups" class="section-padding bg-white">
+      <div class="section-container">
+        <app-section-heading
+          title="Đội Ngũ Giáo Viên"
+          subtitle="Những nhà giáo tận tâm yêu thương từng học sinh"
+          badge="Giáo Viên"
+          badgeClass="bg-lavender-100 text-lavender-500"
+          accentClass="bg-lavender-400">
+        </app-section-heading>
+
+        <div *ngFor="let group of groups()" class="mb-12">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-heading font-bold text-gray-700 text-xl flex items-center gap-2">
+              <span class="w-8 h-1 bg-lavender-400 rounded-full inline-block"></span>
+              {{ group.label }}
+            </h3>
+            <a [routerLink]="['/teacher-groups', group.dept]"
+               class="text-lavender-500 font-body font-medium text-sm inline-flex items-center gap-1 hover:gap-2 transition-all duration-200 hover:text-lavender-700 shrink-0">
+              Xem tất cả <span>→</span>
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <app-card-teacher *ngFor="let m of group.members" [member]="m" />
+          </div>
+        </div>
+      </div>
+    </section>

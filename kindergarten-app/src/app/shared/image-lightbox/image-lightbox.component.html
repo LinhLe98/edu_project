@@ -1,0 +1,77 @@
+<div *ngIf="open" class="lightbox-backdrop fixed inset-0 z-50 bg-black/90 flex flex-col" (click)="onBackdropClick($event)">
+
+  <!-- Top toolbar -->
+  <div class="flex items-center justify-between px-4 py-3 bg-black/50 backdrop-blur-sm flex-shrink-0">
+    <!-- Position indicator -->
+    <span class="text-white/70 font-body text-sm">{{ position }}</span>
+
+    <!-- Caption -->
+    <span class="text-white font-body text-sm text-center flex-1 mx-4 line-clamp-1">
+      {{ currentImage().caption || currentImage().alt }}
+    </span>
+
+    <!-- Action buttons -->
+    <div class="flex items-center gap-2">
+      <!-- Zoom out -->
+      <button (click)="zoomOut()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" title="Thu nhỏ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 15.803m10.607 0A7.5 7.5 0 0 0 5.196 15.803M13.5 10.5h-6" />
+        </svg>
+      </button>
+
+      <!-- Zoom reset -->
+      <button (click)="resetZoom()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs transition-colors min-w-[48px] text-center" title="Kích thước gốc">
+        {{ (zoomLevel() * 100).toFixed(0) }}%
+      </button>
+
+      <!-- Zoom in -->
+      <button (click)="zoomIn()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" title="Phóng to">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 15.803m10.607 0A7.5 7.5 0 0 0 5.196 15.803M10.5 7.5v6m3-3h-6" />
+        </svg>
+      </button>
+
+      <!-- Download -->
+      <button (click)="downloadImage()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" title="Tải xuống">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+        </svg>
+      </button>
+
+      <!-- Close -->
+      <button (click)="close()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors ml-2" title="Đóng">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Image area -->
+  <div class="flex-1 flex items-center justify-center overflow-hidden relative min-h-0 py-4">
+    <!-- Prev button -->
+    <button (click)="prev()" class="absolute left-4 z-10 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors" title="Ảnh trước">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+
+    <!-- Image -->
+    <div class="overflow-auto max-w-full max-h-full flex items-center justify-center">
+      <img *ngIf="currentImage()"
+           [src]="currentImage()!.src"
+           [alt]="currentImage()!.alt"
+           [style.transform]="'scale(' + zoomLevel() + ')'"
+           class="max-h-full object-contain transition-transform duration-200 cursor-move select-none"
+           style="transform-origin: center center;">
+    </div>
+
+    <!-- Next button -->
+    <button (click)="next()" class="absolute right-4 z-10 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors" title="Ảnh tiếp theo">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+  </div>
+
+</div>

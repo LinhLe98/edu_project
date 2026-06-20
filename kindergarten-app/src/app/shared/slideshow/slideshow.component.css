@@ -1,0 +1,5 @@
+:host { display: block; }
+swiper-container::part(bullet-active) { background: #ff8f68; }
+swiper-container::part(bullet) { background: rgba(255,255,255,0.6); }
+swiper-container::part(button-prev),
+swiper-container::part(button-next) { color: white; }

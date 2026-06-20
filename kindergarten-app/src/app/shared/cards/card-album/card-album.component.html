@@ -1,0 +1,15 @@
+
+    <a [routerLink]="['/library/album', album.id]" class="block group rounded-2xl overflow-hidden shadow-soft hover:shadow-soft-md transition-all duration-300 hover:-translate-y-1">
+      <div class="relative aspect-video overflow-hidden">
+        <img [src]="album.coverImage" [alt]="album.title"
+             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-4">
+          <h3 class="font-heading font-semibold text-white text-base mb-1 line-clamp-2">{{ album.title }}</h3>
+          <span class="text-white/80 text-xs font-body">{{ album.images.length }} ảnh</span>
+        </div>
+        <div class="absolute top-3 right-3 bg-white/90 rounded-full px-2 py-0.5 text-xs font-body font-medium text-gray-700">
+          {{ ageLabel }}
+        </div>
+      </div>
+    </a>

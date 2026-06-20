@@ -1,0 +1,122 @@
+<ng-container *ngIf="program() as prog">
+
+  <app-page-hero
+    [title]="prog.title"
+    [subtitle]="prog.shortDescription"
+    [badge]="ageGroupLabel"
+    bgClass="bg-gradient-to-br from-mint-50 via-warm-50 to-sky-50">
+  </app-page-hero>
+
+  <section class="section-padding bg-white">
+    <div class="section-container">
+
+      <!-- Back link -->
+      <a routerLink="/activities"
+         class="inline-flex items-center gap-2 text-mint-600 hover:text-mint-800 font-body text-sm mb-10 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Quay lại Hoạt Động Giáo Dục
+      </a>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Cover image -->
+          <div class="rounded-3xl overflow-hidden shadow-soft-md aspect-video">
+            <img [src]="prog.coverImage" [alt]="prog.title" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Quick info -->
+          <div class="bg-mint-50 rounded-2xl p-6 space-y-4">
+            <h3 class="font-heading text-lg text-gray-800">Thông Tin Chương Trình</h3>
+            <div class="flex items-center gap-3 font-body text-sm text-gray-700">
+              <span class="text-2xl">{{ prog.iconEmoji }}</span>
+              <span class="font-semibold">{{ prog.title }}</span>
+            </div>
+            <div class="flex items-center gap-3 font-body text-sm text-gray-700">
+              <span class="text-mint-500">👶</span>
+              <span>{{ ageGroupLabel }}</span>
+            </div>
+            <div *ngIf="prog.weeklySchedule" class="flex items-center gap-3 font-body text-sm text-gray-700">
+              <span class="text-mint-500">📅</span>
+              <span>{{ prog.weeklySchedule }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="lg:col-span-2 space-y-8">
+
+          <!-- Badge -->
+          <div>
+            <span class="bg-mint-100 text-mint-700 text-xs font-semibold px-3 py-1 rounded-full font-body">
+              Hoạt Động Giáo Dục
+            </span>
+            <h1 class="font-heading text-3xl text-gray-800 mt-3">{{ prog.title }}</h1>
+          </div>
+
+          <!-- Long description -->
+          <div *ngIf="prog.longDescription"
+               class="prose prose-lg max-w-none font-body text-gray-700 leading-relaxed
+                      prose-headings:font-heading prose-headings:text-gray-800
+                      prose-strong:text-gray-800"
+               [innerHTML]="safeLongDescription">
+          </div>
+
+          <!-- Learning outcomes -->
+          <div *ngIf="prog.outcomes && prog.outcomes.length > 0">
+            <h2 class="font-heading text-xl text-gray-800 mb-4">Mục Tiêu Phát Triển</h2>
+            <ul class="space-y-3">
+              <li *ngFor="let outcome of prog.outcomes"
+                  class="flex items-start gap-3 font-body text-sm text-gray-700">
+                <span class="text-mint-500 mt-0.5 flex-shrink-0 text-base">✓</span>
+                <span>{{ outcome }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Featured images -->
+          <div *ngIf="prog.featuredImages && prog.featuredImages.length > 0">
+            <h2 class="font-heading text-xl text-gray-800 mb-4">Hình Ảnh Hoạt Động</h2>
+            <div class="grid grid-cols-3 gap-3">
+              <div *ngFor="let img of prog.featuredImages"
+                   class="rounded-2xl overflow-hidden aspect-video">
+                <img [src]="img" [alt]="prog.title" class="w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other programs -->
+  <section *ngIf="otherPrograms().length > 0" class="section-padding bg-mint-50">
+    <div class="section-container">
+      <h2 class="font-heading text-2xl text-gray-800 mb-8 text-center">Chương Trình Khác</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a *ngFor="let other of otherPrograms()"
+           [routerLink]="['/activities', other.slug]"
+           class="group bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-soft-md transition-all duration-200 no-underline block">
+          <div class="aspect-video overflow-hidden">
+            <img [src]="other.coverImage" [alt]="other.title"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xl">{{ other.iconEmoji }}</span>
+              <h3 class="font-heading text-base text-gray-800 group-hover:text-mint-600 transition-colors">
+                {{ other.title }}
+              </h3>
+            </div>
+            <p class="font-body text-sm text-gray-600 line-clamp-2">{{ other.shortDescription }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</ng-container>

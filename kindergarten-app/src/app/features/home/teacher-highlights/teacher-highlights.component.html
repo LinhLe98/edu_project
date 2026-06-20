@@ -1,0 +1,20 @@
+
+    <section class="section-padding bg-lavender-50">
+      <div class="section-container">
+        <app-section-heading
+          title="Đội Ngũ Giáo Viên"
+          subtitle="Những nhà giáo tận tâm, yêu nghề mến trẻ"
+          badge="Giáo Viên"
+          badgeClass="bg-lavender-100 text-lavender-500"
+          accentClass="bg-lavender-400">
+        </app-section-heading>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <app-card-teacher *ngFor="let member of featured()" [member]="member" />
+        </div>
+        <div class="text-center mt-10">
+          <a routerLink="/about" fragment="teacher-groups" class="btn-secondary border-lavender-400 text-lavender-500 hover:bg-lavender-50">
+            Xem tất cả giáo viên →
+          </a>
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,18 @@
+
+    <section class="section-padding bg-white">
+      <div class="section-container">
+        <app-section-heading
+          title="Album Ảnh Hoạt Động"
+          subtitle="Những khoảnh khắc đáng nhớ của các bé"
+          badge="Album Ảnh"
+          badgeClass="bg-lemon-100 text-lemon-600"
+          accentClass="bg-lemon-400">
+        </app-section-heading>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <app-card-album *ngFor="let album of albums()" [album]="album" />
+        </div>
+        <div class="text-center mt-10">
+          <a routerLink="/library" class="btn-secondary">Xem thư viện đầy đủ →</a>
+        </div>
+      </div>
+    </section>

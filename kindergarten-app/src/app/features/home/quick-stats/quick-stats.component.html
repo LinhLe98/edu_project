@@ -1,0 +1,11 @@
+
+    <section class="bg-gradient-to-r from-peach-400 to-peach-500 py-10">
+      <div class="section-container">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+          <div *ngFor="let stat of stats">
+            <div class="font-heading text-4xl font-bold mb-1">{{ stat.value }}</div>
+            <div class="font-body text-peach-100 text-sm">{{ stat.label }}</div>
+          </div>
+        </div>
+      </div>
+    </section>

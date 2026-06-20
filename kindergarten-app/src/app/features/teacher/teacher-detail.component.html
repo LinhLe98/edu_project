@@ -1,0 +1,112 @@
+<ng-container *ngIf="teacher() as t">
+
+  <app-page-hero
+    [title]="t.fullName"
+    [subtitle]="t.role"
+    [badge]="departmentLabel"
+    bgClass="bg-gradient-to-br from-lavender-50 via-warm-50 to-peach-50">
+  </app-page-hero>
+
+  <section class="section-padding bg-white">
+    <div class="section-container">
+
+      <!-- Back link -->
+      <a routerLink="/about"
+         class="inline-flex items-center gap-2 text-lavender-600 hover:text-lavender-800 font-body text-sm mb-10 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Quay lại Giới Thiệu
+      </a>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+        <!-- Sidebar: photo + contact -->
+        <div class="flex flex-col gap-6">
+          <div class="rounded-3xl overflow-hidden shadow-soft-md aspect-square">
+            <img [src]="t.photo" [alt]="t.fullName" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Contact card -->
+          <div class="bg-lavender-50 rounded-2xl p-6 space-y-3">
+            <h3 class="font-heading text-lg text-gray-800 mb-2">Thông Tin Liên Hệ</h3>
+            <div *ngIf="t.email" class="flex items-center gap-3 font-body text-sm text-gray-700">
+              <span class="text-lavender-500">✉️</span>
+              <a [href]="'mailto:' + t.email" class="hover:text-lavender-700 transition-colors">{{ t.email }}</a>
+            </div>
+            <div *ngIf="t.classInfo" class="flex items-start gap-3 font-body text-sm text-gray-700">
+              <span class="text-lavender-500 mt-0.5">🏫</span>
+              <span>{{ t.classInfo }}</span>
+            </div>
+            <div *ngIf="t.experience" class="flex items-center gap-3 font-body text-sm text-gray-700">
+              <span class="text-lavender-500">⭐</span>
+              <span>{{ t.experience }} năm kinh nghiệm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="lg:col-span-2 space-y-8">
+
+          <!-- Role badge + name -->
+          <div>
+            <span class="bg-lavender-100 text-lavender-700 text-xs font-semibold px-3 py-1 rounded-full font-body">
+              {{ departmentLabel }}
+            </span>
+            <h1 class="font-heading text-3xl text-gray-800 mt-3">{{ t.fullName }}</h1>
+            <p class="font-body text-peach-600 font-medium mt-1">{{ t.role }}</p>
+          </div>
+
+          <!-- Bio -->
+          <div>
+            <h2 class="font-heading text-xl text-gray-800 mb-3">Giới Thiệu</h2>
+            <p class="font-body text-gray-700 leading-relaxed">{{ t.bio }}</p>
+          </div>
+
+          <!-- Qualifications -->
+          <div *ngIf="t.qualifications && t.qualifications.length > 0">
+            <h2 class="font-heading text-xl text-gray-800 mb-4">Bằng Cấp & Chứng Chỉ</h2>
+            <ul class="space-y-2">
+              <li *ngFor="let q of t.qualifications"
+                  class="flex items-start gap-3 font-body text-sm text-gray-700">
+                <span class="text-mint-500 mt-0.5 flex-shrink-0">✓</span>
+                <span>{{ q }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Specialties -->
+          <div *ngIf="t.specialties && t.specialties.length > 0">
+            <h2 class="font-heading text-xl text-gray-800 mb-4">Chuyên Môn</h2>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let spec of t.specialties"
+                    class="bg-mint-50 text-mint-700 border border-mint-200 text-sm px-3 py-1.5 rounded-full font-body">
+                {{ spec }}
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colleagues -->
+  <section *ngIf="colleagues().length > 0" class="section-padding bg-lavender-50">
+    <div class="section-container">
+      <h2 class="font-heading text-2xl text-gray-800 mb-8 text-center">Đồng Nghiệp Cùng Tổ</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <a *ngFor="let c of colleagues()"
+           [routerLink]="['/teachers', c.id]"
+           class="group block bg-white rounded-2xl p-4 text-center shadow-soft hover:shadow-soft-md transition-all duration-200 no-underline">
+          <div class="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3">
+            <img [src]="c.photo" [alt]="c.fullName" class="w-full h-full object-cover">
+          </div>
+          <p class="font-heading text-sm text-gray-800 group-hover:text-lavender-600 transition-colors">{{ c.fullName }}</p>
+          <p class="font-body text-xs text-gray-500 mt-1">{{ c.role }}</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</ng-container>

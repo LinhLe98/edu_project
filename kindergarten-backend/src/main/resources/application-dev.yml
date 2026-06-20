@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kindergarten_dev
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+logging:
+  level:
+    com.kindergarten: DEBUG
+app:
+  admin:
+    username: admin
+    password: admin

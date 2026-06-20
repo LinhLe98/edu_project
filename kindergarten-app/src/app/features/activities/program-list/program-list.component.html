@@ -1,0 +1,15 @@
+
+    <section class="section-padding bg-mint-50">
+      <div class="section-container">
+        <app-section-heading
+          title="Chương Trình Giáo Dục"
+          subtitle="Phát triển toàn diện về thể chất, trí tuệ và cảm xúc"
+          badge="Chương Trình"
+          badgeClass="bg-mint-100 text-mint-600"
+          accentClass="bg-mint-400">
+        </app-section-heading>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <app-card-program *ngFor="let program of programs()" [program]="program" />
+        </div>
+      </div>
+    </section>

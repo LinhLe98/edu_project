@@ -1,0 +1,12 @@
+target/
+.idea/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+*.class
+*.jar
+*.war
+*.ear
+*.log
+application-local.yml

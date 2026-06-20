@@ -1,0 +1,90 @@
+
+<app-page-hero
+  title="Tin Tức & Sự Kiện"
+  subtitle="Cập nhật mới nhất từ Trường Mầm Non Ánh Dương"
+  badge="Tin Tức"
+  bgClass="bg-gradient-to-br from-sky-50 via-warm-50 to-peach-50">
+</app-page-hero>
+
+<section class="section-padding bg-white">
+  <div class="section-container">
+
+    <!-- Search box -->
+    <div class="max-w-md mx-auto mb-8">
+      <div class="relative">
+        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input type="text"
+               placeholder="Tìm kiếm bài viết..."
+               [value]="searchQuery()"
+               (input)="onSearch($any($event.target).value)"
+               class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-gray-200 font-body text-sm focus:outline-none focus:border-sky-400 bg-gray-50 transition-colors">
+      </div>
+    </div>
+
+    <!-- Category filter tabs -->
+    <div class="flex justify-center mb-10">
+      <div class="bg-gray-100 rounded-2xl p-1.5 flex flex-wrap gap-1 justify-center">
+        <button
+          *ngFor="let cat of categories"
+          (click)="setCategory(cat.key)"
+          [ngClass]="{
+            'bg-white text-peach-500 shadow-sm font-semibold': activeCategory() === cat.key,
+            'text-gray-500 hover:text-gray-700': activeCategory() !== cat.key
+          }"
+          class="px-4 py-2 rounded-xl font-body text-sm transition-all duration-200 cursor-pointer">
+          {{ cat.label }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Articles grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[200px]">
+      <a *ngFor="let article of pagedArticles()"
+         [routerLink]="['/news', article.slug]"
+         class="block h-full no-underline">
+        <app-card-news [article]="article" />
+      </a>
+    </div>
+
+    <!-- Empty state -->
+    <div *ngIf="pagedArticles().length === 0" class="text-center py-16">
+      <p class="text-gray-400 font-body text-lg">Không tìm thấy bài viết nào.</p>
+    </div>
+
+    <!-- Pagination -->
+    <div *ngIf="totalPages() > 1" class="flex justify-center items-center gap-2 mt-10">
+      <button
+        (click)="goToPage(currentPage() - 1)"
+        [disabled]="currentPage() === 1"
+        class="w-9 h-9 rounded-xl flex items-center justify-center font-body text-sm border border-gray-200 bg-white hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
+        ‹
+      </button>
+
+      <button
+        *ngFor="let p of pageNumbers()"
+        (click)="goToPage(p)"
+        [ngClass]="{
+          'bg-peach-400 text-white border-peach-400 font-semibold': currentPage() === p,
+          'bg-white text-gray-600 border-gray-200 hover:bg-gray-50': currentPage() !== p
+        }"
+        class="w-9 h-9 rounded-xl flex items-center justify-center font-body text-sm border transition-colors">
+        {{ p }}
+      </button>
+
+      <button
+        (click)="goToPage(currentPage() + 1)"
+        [disabled]="currentPage() === totalPages()"
+        class="w-9 h-9 rounded-xl flex items-center justify-center font-body text-sm border border-gray-200 bg-white hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
+        ›
+      </button>
+    </div>
+
+    <!-- Page info -->
+    <div *ngIf="totalPages() > 1" class="text-center mt-3">
+      <span class="font-body text-xs text-gray-400">Trang {{ currentPage() }} / {{ totalPages() }}</span>
+    </div>
+
+  </div>
+</section>

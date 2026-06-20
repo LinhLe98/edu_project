@@ -1,0 +1,24 @@
+
+    <article class="card-base card-hover flex flex-col h-full group">
+      <div class="relative overflow-hidden aspect-video">
+        <img [src]="article.coverImage" [alt]="article.title"
+             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute top-3 left-3">
+          <span class="px-3 py-1 rounded-full text-xs font-medium font-body bg-peach-400 text-white">
+            {{ categoryLabel }}
+          </span>
+        </div>
+      </div>
+      <div class="p-5 flex flex-col flex-1">
+        <p class="text-xs text-gray-400 font-body mb-2">{{ formattedDate }}</p>
+        <h3 class="font-heading font-semibold text-gray-800 text-lg mb-2 line-clamp-2 group-hover:text-peach-500 transition-colors duration-200">
+          {{ article.title }}
+        </h3>
+        <p class="text-gray-500 font-body text-sm line-clamp-3 flex-1">{{ article.excerpt }}</p>
+        <div class="mt-4">
+          <span class="text-peach-500 font-body text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
+            Đọc tiếp <span>→</span>
+          </span>
+        </div>
+      </div>
+    </article>

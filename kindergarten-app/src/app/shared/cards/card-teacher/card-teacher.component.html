@@ -1,0 +1,18 @@
+
+    <a [routerLink]="['/teachers', member.id]" class="block h-full no-underline">
+      <div class="card-base text-center p-6 group card-hover h-full">
+        <div class="relative w-24 h-24 mx-auto mb-4">
+          <img [src]="member.photo" [alt]="member.fullName"
+               class="w-full h-full object-cover rounded-full ring-4 ring-lavender-200 group-hover:ring-lavender-400 transition-all duration-300">
+        </div>
+        <h3 class="font-heading font-bold text-gray-800 text-lg mb-1">{{ member.fullName }}</h3>
+        <p class="text-lavender-500 font-body text-sm font-medium mb-3">{{ member.role }}</p>
+        <p class="text-gray-500 font-body text-sm line-clamp-3 mb-3">{{ member.bio }}</p>
+        <div class="flex flex-wrap justify-center gap-1">
+          <span *ngFor="let q of member.qualifications"
+                class="px-2 py-0.5 bg-lavender-50 text-lavender-600 rounded-full text-xs font-body">
+            {{ q }}
+          </span>
+        </div>
+      </div>
+    </a>

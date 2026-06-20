@@ -1,0 +1,17 @@
+
+    <section class="section-padding bg-lavender-50">
+      <div class="section-container">
+        <app-section-heading
+          title="Ban Giám Hiệu"
+          subtitle="Lãnh đạo nhà trường với tâm huyết và kinh nghiệm"
+          badge="Lãnh Đạo"
+          badgeClass="bg-lavender-100 text-lavender-500"
+          accentClass="bg-lavender-400">
+        </app-section-heading>
+        <div class="flex flex-wrap justify-center gap-6">
+          <div *ngFor="let m of management()" class="w-full sm:w-72">
+            <app-card-teacher [member]="m" />
+          </div>
+        </div>
+      </div>
+    </section>

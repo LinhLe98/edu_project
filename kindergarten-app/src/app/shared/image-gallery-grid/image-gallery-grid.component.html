@@ -1,0 +1,13 @@
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      <div *ngFor="let img of images; let i = index"
+           (click)="imageClick.emit(i)"
+           class="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer shadow-soft hover:shadow-soft-md transition-all duration-300">
+        <img [src]="img.src" [alt]="img.alt"
+             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div *ngIf="img.caption"
+             class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
+          <p class="text-white text-xs font-body">{{ img.caption }}</p>
+        </div>
+      </div>
+    </div>

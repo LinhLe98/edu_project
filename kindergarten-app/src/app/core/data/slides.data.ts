@@ -1,0 +1,51 @@
+import { HeroSlide } from '../models';
+
+export const HERO_SLIDES: HeroSlide[] = [
+  {
+    id: 'slide-1',
+    imageUrl: 'https://picsum.photos/seed/school-hero-1/1400/700',
+    altText: 'Sân chơi rộng rãi của trường',
+    heading: 'Nơi Ươm Mầm Tương Lai',
+    subheading: 'Môi trường học tập vui vẻ, an toàn và sáng tạo cho trẻ 3–5 tuổi',
+    ctaLabel: 'Tìm hiểu thêm',
+    ctaLink: '/about',
+  },
+  {
+    id: 'slide-2',
+    imageUrl: 'https://picsum.photos/seed/school-hero-2/1400/700',
+    altText: 'Lớp học hiện đại',
+    heading: 'Lớp Học Hiện Đại, Ấm Áp',
+    subheading: 'Trang thiết bị đầy đủ, không gian học tập thân thiện',
+    ctaLabel: 'Xem cơ sở vật chất',
+    ctaLink: '/about',
+    ctaFragment: 'facilities-section',
+  },
+  {
+    id: 'slide-3',
+    imageUrl: 'https://picsum.photos/seed/school-hero-3/1400/700',
+    altText: 'Trẻ em vui chơi',
+    heading: 'Vui Chơi Là Học Tập',
+    subheading: 'Phương pháp giáo dục tích hợp âm nhạc, nghệ thuật và vận động',
+    ctaLabel: 'Xem hoạt động',
+    ctaLink: '/activities',
+  },
+  {
+    id: 'slide-4',
+    imageUrl: 'https://picsum.photos/seed/school-hero-4/1400/700',
+    altText: 'Giáo viên và học sinh',
+    heading: 'Đội Ngũ Giáo Viên Tận Tâm',
+    subheading: 'Giáo viên có chuyên môn cao, yêu nghề mến trẻ',
+    ctaLabel: 'Gặp gỡ giáo viên',
+    ctaLink: '/about',
+    ctaFragment: 'teacher-groups',
+  },
+  {
+    id: 'slide-5',
+    imageUrl: 'https://picsum.photos/seed/school-hero-5/1400/700',
+    altText: 'Lễ hội trường',
+    heading: 'Mùa Hè Rực Rỡ 2025',
+    subheading: 'Đăng ký ngay hôm nay – Chỉ còn vài suất cuối cùng!',
+    ctaLabel: 'Đăng ký ngay',
+    ctaLink: '/contact',
+  },
+];

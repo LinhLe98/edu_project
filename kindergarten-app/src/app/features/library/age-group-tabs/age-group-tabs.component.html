@@ -1,0 +1,31 @@
+
+    <section class="section-padding bg-sky-50">
+      <div class="section-container">
+        <app-section-heading
+          title="Album Theo Độ Tuổi"
+          subtitle="Những khoảnh khắc học tập và vui chơi của các bé"
+          badge="Thư Viện Ảnh"
+          badgeClass="bg-sky-100 text-sky-500"
+          accentClass="bg-sky-400">
+        </app-section-heading>
+
+        <!-- Tabs -->
+        <div class="flex justify-center mb-8">
+          <div class="bg-white rounded-full p-1.5 shadow-soft inline-flex gap-1">
+            <button *ngFor="let tab of tabs"
+                    (click)="activeTab.set(tab.age)"
+                    class="px-5 py-2 rounded-full font-body font-medium text-sm transition-all duration-200"
+                    [ngClass]="activeTab() === tab.age
+                      ? 'bg-sky-400 text-white shadow-soft'
+                      : 'text-gray-600 hover:text-sky-500'">
+              {{ tab.label }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Albums grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <app-card-album *ngFor="let album of activeAlbums()" [album]="album" />
+        </div>
+      </div>
+    </section>
